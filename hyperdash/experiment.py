@@ -17,6 +17,11 @@ from .server_manager import ServerManagerHTTP
 from .hyper_dash import HyperDash
 from .utils import get_logger
 
+try:
+    from keras.callbacks import Callback as KerasCallback
+except ImportError:
+    KerasCallback = None
+
 # Python 2/3 compatibility
 __metaclass__ = type
 
