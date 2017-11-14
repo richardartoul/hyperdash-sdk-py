@@ -174,3 +174,11 @@ class Experiment:
         def __init__(self, exp):
             super(keras_callback, self).__init__()
 
+        def on_epoch_end(self, epoch, logs=None):
+            val_acc = logs.get('val_acc')
+            val_loss = logs.get('val_loss')
+
+            if val_acc is not None:
+                self.metric("val_acc", val_acc)
+            if val_loss is not None:
+                self.metric("val_loss", val_loss)
