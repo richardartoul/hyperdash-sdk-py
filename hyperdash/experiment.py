@@ -166,3 +166,11 @@ class Experiment:
     """
     def log(self, string):
         self._logger.info(string)
+
+    class keras_callback(KerasCallback):
+        if KerasCallback is None:
+            raise ImportError('`keras_callback` requires `keras.callbacks.Callback`.')
+            
+        def __init__(self, exp):
+            super(keras_callback, self).__init__()
+
